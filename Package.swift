@@ -14,6 +14,9 @@ let package = Package(
         .library(
             name: "CXBridge",
             targets: ["CXBridge"]),
+        .executable(
+            name: "CXBridgeExample",
+            targets: ["CXBridgeExample"]),
     ],
     dependencies: [
         .package(url: "https://github.com/cx-org/CombineX", .upToNextMinor(from: "0.2.0")),
@@ -22,6 +25,9 @@ let package = Package(
         .target(
             name: "CXBridge",
             dependencies: ["CombineX"]),
+        .target(
+            name: "CXBridgeExample",
+            dependencies: ["CXBridge"]),
         .testTarget(
             name: "CXBridgeTests",
             dependencies: ["CXBridge"]),
