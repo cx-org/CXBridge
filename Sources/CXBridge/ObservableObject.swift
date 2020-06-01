@@ -46,7 +46,8 @@ extension ACWrappers {
     
     public final class AnyObservableObject<Base: CombineX.ObservableObject>: ACWrapper, Combine.ObservableObject {
         
-        public let base: Base
+        // Mutable due to SwiftUI's ObservedObject.Wrapper which requires ReferenceWritableKeyPath.
+        public var base: Base
         
         public init(wrapping base: Base) {
             self.base = base

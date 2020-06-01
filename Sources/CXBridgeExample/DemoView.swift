@@ -13,6 +13,9 @@ struct DemoView: View {
                 .padding(10)
             List {
                 Text("data: \(dataSource.base.data)")
+                Toggle(isOn: $dataSource.base.state) {
+                    Text("state")
+                }
             }
         }
     }

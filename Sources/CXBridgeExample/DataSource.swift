@@ -6,6 +6,8 @@ class DataSource: ObservableObject {
     
     @Published var data = 0
     
+    var state = false
+    
     private var canceller = Set<AnyCancellable>()
     
     init() {
