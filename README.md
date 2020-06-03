@@ -4,6 +4,10 @@ Bidirectional bridge between `Combine` and `CombineX`.
 
 Though `CombineX` is available whenever Combine is needed, Apple's `Combine` is still required for `SwiftUI` integration. For example, `SwiftUI.EnvironmentObject` only accept `Combine.ObservableObject`, you can't use `CombineX.ObservableObject`. With `CXBridge`, you can easily convert between them.
 
+![screenshot1](.github/screenshot1.gif)
+
+The data source of application above is powered by `CombineX` and used by `SwiftUI`.
+
 ## Usage
 
 - Use `.ac` to convert `CombineX` type to `Combine` type.
