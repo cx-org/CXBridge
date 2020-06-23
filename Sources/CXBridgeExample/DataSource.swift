@@ -1,6 +1,7 @@
+#if os(macOS)
+
 import Dispatch
-import CombineX
-import CXFoundation
+import CXShim
 
 class DataSource: ObservableObject {
     
@@ -11,9 +12,11 @@ class DataSource: ObservableObject {
     private var canceller = Set<AnyCancellable>()
     
     init() {
-        let runloop = DispatchQueue.main.cx
-        runloop.schedule(after: runloop.now, interval: 1) { [unowned self] in
+        let queue = DispatchQueue.main.cx
+        queue.schedule(after: queue.now, interval: 1) { [unowned self] in
             self.data += 1
         }.store(in: &canceller)
     }
 }
+
+#endif

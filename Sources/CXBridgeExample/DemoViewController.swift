@@ -1,5 +1,7 @@
+#if os(macOS)
+
 import AppKit
-import CombineX
+import CXShim
 
 class DemoViewController: NSViewController {
     
@@ -59,3 +61,5 @@ private class FlippedView: NSView {
         return true
     }
 }
+
+#endif

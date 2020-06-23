@@ -1,3 +1,5 @@
+#if os(macOS)
+
 import SwiftUI
 import CXBridge
 
@@ -20,3 +22,5 @@ struct DemoView: View {
         }
     }
 }
+
+#endif

@@ -1,6 +1,21 @@
 #if canImport(Combine)
 
 import Combine
+
+#if USE_COMBINE
+
+import CXNamespace
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension Combine.Subscriber {
+    
+    public var ac: Self {
+        return self
+    }
+}
+
+#elseif USE_COMBINEX
+
 import CombineX
 import CXNamespace
 
@@ -30,4 +45,6 @@ extension CombineX.Subscriber {
     }
 }
 
-#endif
+#endif // USE_COMBINE
+
+#endif // canImport(Combine)

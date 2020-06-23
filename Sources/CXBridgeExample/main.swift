@@ -1,3 +1,5 @@
+#if os(macOS)
+
 import AppKit
 import SwiftUI
 import CXBridge
@@ -33,3 +35,5 @@ let app = NSApplication.shared
 let del = AppDelegate()
 app.delegate = del
 app.run()
+
+#endif

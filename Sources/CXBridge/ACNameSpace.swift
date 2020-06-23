@@ -26,3 +26,24 @@ public extension ACWrapping where AC: ACWrapper, AC.Base == Self {
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public enum ACWrappers {}
+
+// MARK: - Compatible
+
+// Expected Warning: Redundant conformance constraint 'Self': 'CXWrapper'
+// https://bugs.swift.org/browse/SR-11670
+public protocol ACSelfWrapping: ACWrapping, ACWrapper where Base == Self, AC == Self {}
+
+public extension ACSelfWrapping {
+    
+    var ac: Self {
+        return self
+    }
+    
+    var base: Self {
+        return self
+    }
+    
+    init(wrapping base: Self) {
+        self = base
+    }
+}

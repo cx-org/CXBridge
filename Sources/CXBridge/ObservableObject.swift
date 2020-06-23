@@ -1,6 +1,40 @@
 #if canImport(Combine)
 
 import Combine
+
+#if USE_COMBINE
+
+import CXNamespace
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension Combine.ObservableObject {
+    
+    // returns wrapper object so base object can be accessed when using Combine.
+    public var ac: ACWrappers.AnyObservableObject<Self> {
+        return .init(wrapping: self)
+    }
+}
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension ACWrappers {
+    
+    public final class AnyObservableObject<Base: Combine.ObservableObject>: ACWrapper, ObservableObject {
+        
+        // Mutable due to SwiftUI's ObservedObject.Wrapper which requires ReferenceWritableKeyPath.
+        public var base: Base
+        
+        public init(wrapping base: Base) {
+            self.base = base
+        }
+        
+        public var objectWillChange: Base.ObjectWillChangePublisher {
+            return base.objectWillChange
+        }
+    }
+}
+
+#elseif USE_COMBINEX
+
 import CombineX
 import CXNamespace
 
@@ -59,4 +93,6 @@ extension ACWrappers {
     }
 }
 
-#endif
+#endif // USE_COMBINE
+
+#endif // canImport(Combine)
